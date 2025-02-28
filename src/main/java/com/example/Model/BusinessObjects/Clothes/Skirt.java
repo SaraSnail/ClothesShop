@@ -1,5 +1,7 @@
 package com.example.Model.BusinessObjects.Clothes;
 
+import com.example.Controller.Color;
+import com.example.Controller.Material;
 import com.example.Controller.Size;
 
 public class Skirt extends Clothes{
@@ -9,7 +11,7 @@ public class Skirt extends Clothes{
     public Skirt() {
     }
 
-    public Skirt(int id, String name, double price, Size size, String material, String color, int waistline, String pattern) {
+    public Skirt(int id, String name, double price, Size size, Material material, Color color, int waistline, String pattern) {
         super(id, name, price, size, material, color);
         this.waistline = waistline;
         this.pattern = pattern;

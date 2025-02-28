@@ -1,5 +1,7 @@
 package com.example.Model.BusinessObjects.Clothes;
 
+import com.example.Controller.Color;
+import com.example.Controller.Material;
 import com.example.Controller.Size;
 
 public class TShirt extends Clothes{
@@ -7,9 +9,11 @@ public class TShirt extends Clothes{
     private String neck;//Typ av nack-utringning
 
     public TShirt() {
+        this.price = 99.9;
+        this.name = "T-Shirt";
     }
 
-    public TShirt(int id, String name, double price, Size size, String material, String color, int sleeves, String neck) {
+    public TShirt(int id, String name, double price, Size size, Material material, Color color, int sleeves, String neck) {
         super(id, name, price, size, material, color);
         this.sleeves = sleeves;
         this.neck = neck;

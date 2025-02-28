@@ -1,8 +1,8 @@
 package com.example.Model.BusinessObjects;
 
 public abstract class BusinessObject {
-    private int id;
-    private String name;
+    protected int id;
+    protected String name;
 
     public BusinessObject() {
     }

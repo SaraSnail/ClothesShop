@@ -1,5 +1,7 @@
 package com.example.Model.BusinessObjects.Clothes;
 
+import com.example.Controller.Color;
+import com.example.Controller.Material;
 import com.example.Controller.Size;
 
 public class Pants extends Clothes{
@@ -7,9 +9,11 @@ public class Pants extends Clothes{
     private double length;
 
     public Pants() {
+        this.name = "Pants";
+        this.price = 199.89;
     }
 
-    public Pants(int id, String name, double price, Size size, String material, String color, String fit, double length) {
+    public Pants(int id, String name, double price, Size size, Material material, Color color, String fit, double length) {
         super(id, name, price, size, material, color);
         this.fit = fit;
         this.length = length;
@@ -18,12 +22,14 @@ public class Pants extends Clothes{
     }
 
     //Här anger jag inte priset i skapandet
-    public Pants(int id, String name, Size size, String material, String color, String fit, double length) {
+    public Pants(int id, String name, Size size, Material material, Color color, String fit, double length) {
         super(id, name, size, material, color);
         this.fit = fit;
         this.length = length;
         this.price = 200;
     }
+
+
 
     public String getFit() {
         return fit;

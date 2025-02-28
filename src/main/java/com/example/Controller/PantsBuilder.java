@@ -3,8 +3,7 @@ package com.example.Controller;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 
 public class PantsBuilder {
-    private Pants pants;
-    private Size size;
+    private Pants pants = new Pants();
 
     public PantsBuilder() {
 
@@ -17,18 +16,14 @@ public class PantsBuilder {
         return this;
     }
 
-    public PantsBuilder addMaterial(String material) {
-        if(material.equalsIgnoreCase("cotton") || material.equalsIgnoreCase("jeans") || material.equalsIgnoreCase("polyester") ){
-            pants.setMaterial(material);
-        }else {
-            throw new RuntimeException("Not available material");
-        }
+    public PantsBuilder addMaterial(Material material) {
+        pants.setMaterial(material);
 
 
         return this;
     }
 
-    public PantsBuilder addColor(String color) {
+    public PantsBuilder addColor(Color color) {
         pants.setColor(color);
         return this;
     }
