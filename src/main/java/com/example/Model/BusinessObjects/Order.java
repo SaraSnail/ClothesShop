@@ -56,6 +56,6 @@ public class Order extends BusinessObject{
     public void setOrderDone(boolean orderDone) {
         boolean oldOrderDone = this.orderDone;
         this.orderDone = orderDone;
-        propertyChangeSupport.firePropertyChange("Order status changed", oldOrderDone, this.orderDone);
+        propertyChangeSupport.firePropertyChange("Order done status changed", oldOrderDone, this.orderDone);
     }
 }
