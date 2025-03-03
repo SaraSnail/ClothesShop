@@ -38,18 +38,29 @@ public class Receipt extends BusinessObject{
         System.out.println("----------"+order.getId()+"----------");
         System.out.println("----------"+order.getCustomer().getName()+"----------");
         for (int i = 0; i < order.getClothesList().size(); i++) {
-            /*if(order.getClothesList() instanceof Pants){
-                //Kan få de specifika för de sortens plagg
-            } else if (order.getClothesList() instanceof TShirt) {
 
-            }else if(order.getClothesList() instanceof Skirt){
-
-            }*/
 
             System.out.println(order.getClothesList().get(i).getName() +" " + order.getClothesList().get(i).getId());
             System.out.println(order.getClothesList().get(i).getColor());
             System.out.println(order.getClothesList().get(i).getSize());
             System.out.println(order.getClothesList().get(i).getMaterial());
+
+            if(order.getClothesList().get(i).getName().equals("Pants")){
+                //Kan få de specifika för de sortens plagg
+                Pants pants = (Pants)order.getClothesList().get(i);
+                System.out.println(pants.getFit());
+                System.out.println(pants.getLength());
+            } else if (order.getClothesList().get(i).getName().equals("T-Shirt")) {
+                TShirt tShirt = (TShirt)order.getClothesList().get(i);
+                System.out.println(tShirt.getSleeves());
+                System.out.println(tShirt.getNeck());
+
+            }else if(order.getClothesList().get(i).getName().equals("Skirt")){
+                Skirt skirt = (Skirt)order.getClothesList().get(i);
+                System.out.println(skirt.getWaistline());
+                System.out.println(skirt.getPattern());
+            }
+
             System.out.println(order.getClothesList().get(i).getPrice() + " kr");
             total += order.getClothesList().get(i).getPrice();
             System.out.println("------------------------");

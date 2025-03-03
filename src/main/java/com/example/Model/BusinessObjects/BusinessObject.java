@@ -11,7 +11,10 @@ public abstract class BusinessObject {
     public BusinessObject(int id, String name) {
         this.id = id;
         this.name = name;
+    }
 
+    public BusinessObject(int id) {
+        this.id = id;
     }
 
     public int getId() {

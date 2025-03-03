@@ -16,6 +16,8 @@ public class Meny {
     private static String[] materials = {String.valueOf(Material.fromValue(1)),String.valueOf(Material.fromValue(2)),String.valueOf(Material.fromValue(3))};
     private static String[] colors = {String.valueOf(Color.fromValue(1)),String.valueOf(Color.fromValue(2)),String.valueOf(Color.fromValue(3))};
     private static Scanner scanner = new Scanner(System.in);
+    //private static CommandPipeline pipeline = new CommandPipeline();
+    private static PantsCommand pantsCommand = new PantsCommand();
 
     public static void main(String[] args) {
 
@@ -51,7 +53,7 @@ public class Meny {
             System.out.print("Enter your choice: ");
 
 
-            int clothesType = getValidChoice(3);
+            int clothesType = Util.getValidChoice(3);
             createClothes(clothesType, order, clothesId);
             clothesId++;
 
@@ -59,7 +61,7 @@ public class Meny {
             System.out.println("Order done?");
             System.out.println("1. Yes\n2. No");
             System.out.print("Enter your choice: ");
-            int YN = getValidChoice(2);
+            int YN = Util.getValidChoice(2);
             switch (YN){
                 case 1:
                     order.setOrderDone(true);
@@ -75,6 +77,7 @@ public class Meny {
         }
 
         Receipt receipt = new Receipt();
+        receipt.setId(id);
         receipt.setOrder(order);
         receipt.printOrder();
 
@@ -92,6 +95,10 @@ public class Meny {
                         .addMaterial(Material.fromValue(chooseEnum(materials,"material")))
                         .addColor(Color.fromValue(chooseEnum(colors,"color")))
                         .build();
+
+                CommandPipeline pipeline = new CommandPipeline();
+                pipeline.addCommand(pantsCommand);
+                pants = (Pants) pipeline.execute(pants);
 
                 pants.setId(id);
                 order.getClothesList().add(pants);
@@ -137,7 +144,7 @@ public class Meny {
         while (loop){
             System.out.print("Enter choice: ");
 
-            int choice = getValidChoice(3);
+            int choice = Util.getValidChoice(3);
             switch (choice) {
                 case 1:
                     return 1;
@@ -155,7 +162,7 @@ public class Meny {
 
     }
 
-    private static int getValidChoice(int maxOptions){
+   /* private static int getValidChoice(int maxOptions){
         int choice = -1;
         while(choice < 1 || choice > maxOptions){
             try{
@@ -169,5 +176,5 @@ public class Meny {
             }
         }
         return choice;
-    }
+    }*/
 }

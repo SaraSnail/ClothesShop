@@ -30,6 +30,13 @@ public abstract class Clothes extends BusinessObject {
         this.color = color;
     }
 
+    public Clothes(int id, Size size, Material material, Color color) {
+        super(id);
+        this.size = size;
+        this.material = material;
+        this.color = color;
+    }
+
 
     public double getPrice() {
         return price;

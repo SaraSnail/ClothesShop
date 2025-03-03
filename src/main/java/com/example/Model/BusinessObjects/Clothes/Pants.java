@@ -6,7 +6,7 @@ import com.example.Controller.Size;
 
 public class Pants extends Clothes{
     private String fit;
-    private double length;
+    private String length;
 
     public Pants() {
         this.name = "Pants";
@@ -15,11 +15,12 @@ public class Pants extends Clothes{
 
 
     //Här anger jag inte priset i skapandet
-    public Pants(int id, String name, Size size, Material material, Color color, String fit, double length) {
-        super(id, name, size, material, color);
+    public Pants(int id,  Size size, Material material, Color color, String fit, String length) {
+        super(id, size, material, color);
         this.fit = fit;
         this.length = length;
         this.price = 199.89;
+        this.name = "Pants";
     }
 
 
@@ -32,11 +33,11 @@ public class Pants extends Clothes{
         this.fit = fit;
     }
 
-    public double getLength() {
+    public String getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(String length) {
         this.length = length;
     }
 }

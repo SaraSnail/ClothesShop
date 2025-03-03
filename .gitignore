@@ -12,6 +12,9 @@ target/
 *.iml
 *.ipr
 
+### vcs.xml ###
+vcs.xml
+
 ### Eclipse ###
 .apt_generated
 .classpath

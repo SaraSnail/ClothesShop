@@ -5,7 +5,7 @@ import com.example.Controller.Material;
 import com.example.Controller.Size;
 
 public class Skirt extends Clothes{
-    private int waistline;//int eller String?
+    private String waistline;//int eller String?
     private String pattern;
 
     public Skirt() {
@@ -13,18 +13,19 @@ public class Skirt extends Clothes{
         this.price = 149.99;
     }
 
-    public Skirt(int id, String name, Size size, Material material, Color color, int waistline, String pattern) {
-        super(id, name, size, material, color);
+    public Skirt(int id, Size size, Material material, Color color, String waistline, String pattern) {
+        super(id, size, material, color);
         this.waistline = waistline;
         this.pattern = pattern;
         this.price = 149.99;
+        this.name = "Skirt";
     }
 
-    public int getWaistline() {
+    public String getWaistline() {
         return waistline;
     }
 
-    public void setWaistline(int waistline) {
+    public void setWaistline(String waistline) {
         this.waistline = waistline;
     }
 
