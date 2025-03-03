@@ -21,6 +21,7 @@ public class Order extends BusinessObject{
 
     public Order(int id, String name) {
         super(id, name);
+        propertyChangeSupport = new PropertyChangeSupport(this);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

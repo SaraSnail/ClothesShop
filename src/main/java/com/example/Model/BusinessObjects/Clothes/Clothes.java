@@ -22,13 +22,13 @@ public abstract class Clothes extends BusinessObject {
         this.color = color;
     }
 
+
     public Clothes(int id, String name, Size size, Material material, Color color) {
         super(id, name);
         this.size = size;
         this.material = material;
         this.color = color;
     }
-
 
 
     public double getPrice() {

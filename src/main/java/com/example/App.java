@@ -23,10 +23,10 @@ public class App
     public static void main( String[] args )
     {
 
-        CEO ceo = new CEO(2,"Keigo Takami");
+        //CEO ceo = new CEO(2,"Keigo Takami");
 
-        Customer customer1 = new Customer(1,"Julia Skog","Luthagen 12B","juliaSkog@gmail.com");
-        orderLoop(customer1,ceo,1);
+        //Customer customer1 = new Customer(1,"Julia Skog","Luthagen 12B","juliaSkog@gmail.com");
+        //orderLoop(customer1,ceo,1);
 
         System.out.println("---------:3--------");
 

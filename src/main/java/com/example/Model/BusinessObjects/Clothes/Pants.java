@@ -13,20 +13,13 @@ public class Pants extends Clothes{
         this.price = 199.89;
     }
 
-    public Pants(int id, String name, double price, Size size, Material material, Color color, String fit, double length) {
-        super(id, name, price, size, material, color);
-        this.fit = fit;
-        this.length = length;
-        this.price = 200;//Ändrade price access modifier i Clothes till protected
-        //Tänker att det blir dubbelt om jag också får ange ett pris när jag skapar objektet men det är inte priset som det blir
-    }
 
     //Här anger jag inte priset i skapandet
     public Pants(int id, String name, Size size, Material material, Color color, String fit, double length) {
         super(id, name, size, material, color);
         this.fit = fit;
         this.length = length;
-        this.price = 200;
+        this.price = 199.89;
     }
 
 

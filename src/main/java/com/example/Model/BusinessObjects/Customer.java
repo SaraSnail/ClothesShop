@@ -10,6 +10,7 @@ public class Customer extends BusinessObject{
     //private List<Order> orders = new ArrayList<Order>();//Ha flera orders eller en order med flera plagg?
 
     public Customer() {
+
     }
 
     public Customer(int id, String name, String adress, String mail) {

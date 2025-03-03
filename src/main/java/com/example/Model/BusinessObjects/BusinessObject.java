@@ -7,9 +7,11 @@ public abstract class BusinessObject {
     public BusinessObject() {
     }
 
+
     public BusinessObject(int id, String name) {
         this.id = id;
         this.name = name;
+
     }
 
     public int getId() {
@@ -27,4 +29,5 @@ public abstract class BusinessObject {
     public void setName(String name) {
         this.name = name;
     }
+
 }

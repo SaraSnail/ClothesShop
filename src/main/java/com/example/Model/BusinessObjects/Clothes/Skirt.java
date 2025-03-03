@@ -9,12 +9,15 @@ public class Skirt extends Clothes{
     private String pattern;
 
     public Skirt() {
+        this.name = "Skirt";
+        this.price = 149.99;
     }
 
-    public Skirt(int id, String name, double price, Size size, Material material, Color color, int waistline, String pattern) {
-        super(id, name, price, size, material, color);
+    public Skirt(int id, String name, Size size, Material material, Color color, int waistline, String pattern) {
+        super(id, name, size, material, color);
         this.waistline = waistline;
         this.pattern = pattern;
+        this.price = 149.99;
     }
 
     public int getWaistline() {

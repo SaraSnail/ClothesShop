@@ -15,7 +15,7 @@ public class Receipt extends BusinessObject{
         this.name = "Receipt";
     }
 
-    public Receipt(int id, String name,Order order) {
+    public Receipt(int id, String name, Order order) {
         super(id, name);
         this.order = order;
     }
