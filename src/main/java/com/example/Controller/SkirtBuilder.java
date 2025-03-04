@@ -25,8 +25,14 @@ public class SkirtBuilder {
     }
 
     public Skirt build(){
-        if(skirt == null){
-            throw new NullPointerException("skirt is null");
+        if(skirt.getSize() == null){
+            throw new NullPointerException("No size chosen");
+        }
+        if(skirt.getMaterial() == null){
+            throw new NullPointerException("No material chosen");
+        }
+        if(skirt.getColor() == null){
+            throw new NullPointerException("No color chosen");
         }
         return skirt;
     }

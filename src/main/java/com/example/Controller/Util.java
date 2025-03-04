@@ -9,6 +9,7 @@ public class Util {
         int choice = -1;
         while(choice < 1 || choice > maxOptions){
             try{
+                System.out.print("Enter your choice: ");
                 String input = scanner.nextLine();
                 choice = Integer.parseInt(input);
                 if(choice < 1 || choice > maxOptions){

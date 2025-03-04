@@ -5,13 +5,16 @@ import com.example.Controller.Material;
 import com.example.Controller.Size;
 import com.example.Model.BusinessObjects.BusinessObject;
 
+
 public abstract class Clothes extends BusinessObject {
     protected double price;
     private Size size;//Kolla på example enum
     private Material material;
     private Color color;
 
+
     public Clothes() {
+
     }
 
     public Clothes(int id, String name, double price, Size size, Material material, Color color) {

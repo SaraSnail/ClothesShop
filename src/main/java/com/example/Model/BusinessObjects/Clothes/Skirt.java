@@ -5,7 +5,7 @@ import com.example.Controller.Material;
 import com.example.Controller.Size;
 
 public class Skirt extends Clothes{
-    private String waistline;//int eller String?
+    private String waistline;
     private String pattern;
 
     public Skirt() {

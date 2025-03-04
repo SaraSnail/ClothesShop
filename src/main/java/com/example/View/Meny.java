@@ -16,12 +16,16 @@ public class Meny {
     private static String[] materials = {String.valueOf(Material.fromValue(1)),String.valueOf(Material.fromValue(2)),String.valueOf(Material.fromValue(3))};
     private static String[] colors = {String.valueOf(Color.fromValue(1)),String.valueOf(Color.fromValue(2)),String.valueOf(Color.fromValue(3))};
     private static Scanner scanner = new Scanner(System.in);
-    //private static CommandPipeline pipeline = new CommandPipeline();
-    private static PantsCommand pantsCommand = new PantsCommand();
+
+    private static PantsCommand pantsCommand;
+    private static TShirtCommand tShirtCommand;
+    private static SkirtCommand skirtCommand;
+    private static EventManager eventManager = new EventManager();
 
     public static void main(String[] args) {
 
         CEO ceo = new CEO(1,"Josefin Flodin");
+        eventManager.addListener(ceo);
 
         int id = 1;
 
@@ -35,11 +39,10 @@ public class Meny {
         Customer customer = new Customer(id,fullName,adress,mail);
 
         Order order = new Order();
-        order.addPropertyChangeListener(ceo);
+
 
         order.setId(id);
         order.setCustomer(customer);
-        order.setOrderDone(false);
         System.out.println("Nice to meet you " + fullName);
 
 
@@ -50,7 +53,6 @@ public class Meny {
 
             System.out.println("\nWhat item do you want to add?");
             System.out.println("1. Pants\n2. T-Shirt\n3. Skirt");
-            System.out.print("Enter your choice: ");
 
 
             int clothesType = Util.getValidChoice(3);
@@ -60,21 +62,19 @@ public class Meny {
 
             System.out.println("Order done?");
             System.out.println("1. Yes\n2. No");
-            System.out.print("Enter your choice: ");
             int YN = Util.getValidChoice(2);
             switch (YN){
                 case 1:
-                    order.setOrderDone(true);
                     addClothes = false;
                     break;
                 case 2:
-                    order.setOrderDone(false);
                     break;
 
             }
 
 
         }
+
 
         Receipt receipt = new Receipt();
         receipt.setId(id);
@@ -86,45 +86,113 @@ public class Meny {
     }
 
     private static void createClothes(int clothesType, Order order, int id){
+        Size size;
+        Material material;
+        Color color;
+
         switch (clothesType){
             case 1:
                 //Pants
+                eventManager.notifyListeners("Starting to create pants");
+
                 PantsBuilder pantsBuilder = new PantsBuilder();
+
+                size = Size.fromValue(chooseEnum(sizes,"size"));
+                material = Material.fromValue(chooseEnum(materials,"material"));
+                color = Color.fromValue(chooseEnum(colors,"color"));
+
                 Pants pants = pantsBuilder
+                        .addSize(size)
+                        .addMaterial(material)
+                        .addColor(color)
+                        .build();
+
+
+                /*Pants pants = pantsBuilder
                         .addSize(Size.fromValue(chooseEnum(sizes,"size")))
                         .addMaterial(Material.fromValue(chooseEnum(materials,"material")))
                         .addColor(Color.fromValue(chooseEnum(colors,"color")))
-                        .build();
+                        .build();*/
 
-                CommandPipeline pipeline = new CommandPipeline();
-                pipeline.addCommand(pantsCommand);
-                pants = (Pants) pipeline.execute(pants);
+
+                CommandPipeline pantsPipeline = new CommandPipeline();
+                if(pantsCommand == null){
+                    pantsCommand = new PantsCommand();
+                    pantsPipeline.addCommand(pantsCommand);
+                }
+
+                pants = (Pants) pantsPipeline.execute(pants);
 
                 pants.setId(id);
+
+                eventManager.notifyListeners("Pants created");
                 order.getClothesList().add(pants);
 
                 break;
             case 2:
                 //TShirt
+                eventManager.notifyListeners("Starting to create a t-shirt");
                 TShirtBuilder tShirtBuilder = new TShirtBuilder();
+
+                size = Size.fromValue(chooseEnum(sizes,"size"));
+                material = Material.fromValue(chooseEnum(materials,"material"));
+                color = Color.fromValue(chooseEnum(colors,"color"));
+
                 TShirt tShirt = tShirtBuilder
-                        .addSize(Size.fromValue(chooseEnum(sizes,"size")))
-                        .addMaterial(Material.fromValue(chooseEnum(materials,"material")))
-                        .addColor(Color.fromValue(chooseEnum(colors,"color")))
+                        .addSize(size)
+                        .addMaterial(material)
+                        .addColor(color)
                         .build();
 
+
+
+
+                CommandPipeline tShirtPipeline = new CommandPipeline();
+                if(tShirtCommand == null){
+                    tShirtCommand = new TShirtCommand();
+                    tShirtPipeline.addCommand(tShirtCommand);
+                }
+
+                tShirt = (TShirt) tShirtPipeline.execute(tShirt);
+
                 tShirt.setId(id);
+                eventManager.notifyListeners("T-Shirt created");
                 order.getClothesList().add(tShirt);
                 break;
+
             case 3:
                 //Skirt
+                eventManager.notifyListeners("Starting to create a skirt");
                 SkirtBuilder skirtBuilder = new SkirtBuilder();
+                size = Size.fromValue(chooseEnum(sizes,"size"));
+                material = Material.fromValue(chooseEnum(materials,"material"));
+                color = Color.fromValue(chooseEnum(colors,"color"));
+
+
                 Skirt skirt = skirtBuilder
-                        .addSize(Size.fromValue(chooseEnum(sizes,"size")))
-                        .addMaterial(Material.fromValue(chooseEnum(materials, "material")))
-                        .addColor(Color.fromValue(chooseEnum(colors,"color")))
+                        .addSize(size)
+                        .addMaterial(material)
+                        .addColor(color)
                         .build();
+
+
+
+                //Lyssnar när tex Pants skapas och när den läggs in i order lístan
+                //Observer: objekt (ex ObserverHandler) som innehåller lista med objekt som är lyssnare. Har metod "notify" för att meddela dem.
+                    //Kan ignorera old value
+                //Kan ha true = börja tillverkas
+                //false = plagg klart
+
+                CommandPipeline skirtPipeline = new CommandPipeline();
+                if(skirtCommand == null){
+                    skirtCommand = new SkirtCommand();
+                    skirtPipeline.addCommand(skirtCommand);
+                }
+
+                skirt = (Skirt) skirtPipeline.execute(skirt);
+
                 skirt.setId(id);
+                eventManager.notifyListeners("Skirt created");
                 order.getClothesList().add(skirt);
                 break;
             default:
@@ -134,17 +202,16 @@ public class Meny {
     }
 
     private static int chooseEnum(String[] choices, String type) {
-        boolean loop = true;
 
         System.out.println("["+type.toUpperCase()+"]");
         for (int i = 0; i < choices.length; i++) {
             System.out.println((i + 1) + ". " + choices[i]);
         }
 
-        while (loop){
-            System.out.print("Enter choice: ");
+        while (true){
 
             int choice = Util.getValidChoice(3);
+
             switch (choice) {
                 case 1:
                     return 1;
@@ -158,23 +225,6 @@ public class Meny {
 
         }
 
-        return 0;
-
     }
 
-   /* private static int getValidChoice(int maxOptions){
-        int choice = -1;
-        while(choice < 1 || choice > maxOptions){
-            try{
-                String input = scanner.nextLine();
-                choice = Integer.parseInt(input);
-                if(choice < 1 || choice > maxOptions){
-                    System.out.println("Please enter a number between 1 and "+maxOptions);
-                }
-            }catch (NumberFormatException e){
-                System.out.println("Please enter a valid number");
-            }
-        }
-        return choice;
-    }*/
 }

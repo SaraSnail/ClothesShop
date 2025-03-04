@@ -25,8 +25,14 @@ public class TShirtBuilder {
     }
 
     public TShirt build() {
-        if (tShirt == null) {
-            throw new NullPointerException("tShirt is null");
+        if (tShirt.getSize() == null) {
+            throw new NullPointerException("No size chosen");
+        }
+        if (tShirt.getMaterial() == null) {
+            throw new NullPointerException("No material chosen");
+        }
+        if (tShirt.getColor() == null) {
+            throw new NullPointerException("No color chosen");
         }
         return tShirt;
     }

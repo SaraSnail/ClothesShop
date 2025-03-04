@@ -10,17 +10,24 @@ public class PantsCommand implements ClothesProcessingCommand{
 
     @Override
     public Clothes process(Clothes clothes) {
-        if(clothes instanceof Pants){
+        if(clothes == null){
+            System.out.println("Null");
 
+        } else if (clothes.getName().equals("Pants")) {
+
+            System.out.println(clothes.getName() + clothes.getId());
             clothes = addFit(clothes);
             clothes = addLength(clothes);
 
             return clothes;
-        }else {
-            return null;
+
+        } else {
+            System.out.println("Not instance of Pants");
         }
+        return null;
 
     }
+
 
     private Clothes addFit(Clothes clothes) {
 
@@ -31,6 +38,11 @@ public class PantsCommand implements ClothesProcessingCommand{
         }else if(choice == 2){
             ((Pants)clothes).setFit("Tight");
         }
+
+        /*String fit = (choice == 1) ? "Loose" : "Tight";
+        ((Pants) clothes).setFit(fit);*/
+
+        System.out.println("Measuring out a "+((Pants)clothes).getFit()+" fit");
 
         return clothes;
     }
@@ -45,24 +57,9 @@ public class PantsCommand implements ClothesProcessingCommand{
             ((Pants) clothes).setLength("Short");
         }
 
+        System.out.println("Cutting the pants to be " + ((Pants) clothes).getLength());
 
         return clothes;
     }
 
-    //Samma som i Meny, flytta så båda kan nå denna?
-   /* private int getValidChoice(int maxOptions){
-        int choice = -1;
-        while(choice < 1 || choice > maxOptions){
-            try{
-                String input = scanner.nextLine();
-                choice = Integer.parseInt(input);
-                if(choice < 1 || choice > maxOptions){
-                    System.out.println("Please enter a number between 1 and "+maxOptions);
-                }
-            }catch (NumberFormatException e){
-                System.out.println("Please enter a valid number");
-            }
-        }
-        return choice;
-    }*/
 }

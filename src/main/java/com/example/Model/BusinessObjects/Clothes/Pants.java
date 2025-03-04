@@ -14,7 +14,6 @@ public class Pants extends Clothes{
     }
 
 
-    //Här anger jag inte priset i skapandet
     public Pants(int id,  Size size, Material material, Color color, String fit, String length) {
         super(id, size, material, color);
         this.fit = fit;

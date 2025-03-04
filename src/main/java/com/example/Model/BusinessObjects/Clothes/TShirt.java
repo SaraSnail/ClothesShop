@@ -6,7 +6,7 @@ import com.example.Controller.Size;
 
 public class TShirt extends Clothes{
     private String sleeves;
-    private String neck;//Typ av nack-utringning
+    private String neck;
 
     public TShirt() {
         this.price = 99.9;

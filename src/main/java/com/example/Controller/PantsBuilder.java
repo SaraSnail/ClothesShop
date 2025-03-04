@@ -11,7 +11,6 @@ public class PantsBuilder {
 
     //price, size, material, color,
     public PantsBuilder addSize(Size size) {
-        //if(size.matches(String.valueOf(Size.SMALL)));//Kolla hur man jobbar med enum
         pants.setSize(size);
         return this;
     }
@@ -29,8 +28,14 @@ public class PantsBuilder {
     }
 
     public Pants build() {
-        if(pants.getMaterial() == null || pants.getMaterial().equals("")) {
+        if(pants.getMaterial() == null) {
             throw new RuntimeException("No material chosen");
+        }
+        if(pants.getSize() == null) {
+            throw new RuntimeException("No size chosen");
+        }
+        if(pants.getColor() == null) {
+            throw new RuntimeException("No color chosen");
         }
         return pants;
     }
