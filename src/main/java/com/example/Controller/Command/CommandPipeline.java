@@ -1,8 +1,7 @@
-package com.example.Controller;
+package com.example.Controller.Command;
 
 import com.example.Model.BusinessObjects.Clothes.Clothes;
 
-import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 public class CommandPipeline {

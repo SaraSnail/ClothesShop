@@ -1,9 +1,6 @@
 package com.example.Model.BusinessObjects;
 
-import com.example.Controller.Worker;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import com.example.Controller.Observer.Worker;
 
 public class CEO extends BusinessObject implements Worker {//implements PropertyChangeListener
     //Observer: ska notifieras när kläder beställts osv

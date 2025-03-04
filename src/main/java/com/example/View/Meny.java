@@ -1,6 +1,17 @@
 package com.example.View;
 
 import com.example.Controller.*;
+import com.example.Controller.Builder.PantsBuilder;
+import com.example.Controller.Builder.SkirtBuilder;
+import com.example.Controller.Builder.TShirtBuilder;
+import com.example.Controller.Command.CommandPipeline;
+import com.example.Controller.Command.PantsCommand;
+import com.example.Controller.Command.SkirtCommand;
+import com.example.Controller.Command.TShirtCommand;
+import com.example.Controller.Enums.Color;
+import com.example.Controller.Enums.Material;
+import com.example.Controller.Enums.Size;
+import com.example.Controller.Observer.EventManager;
 import com.example.Model.BusinessObjects.CEO;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 import com.example.Model.BusinessObjects.Clothes.Skirt;

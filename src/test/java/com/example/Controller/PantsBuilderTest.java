@@ -1,5 +1,9 @@
 package com.example.Controller;
 
+import com.example.Controller.Builder.PantsBuilder;
+import com.example.Controller.Enums.Color;
+import com.example.Controller.Enums.Material;
+import com.example.Controller.Enums.Size;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 import org.junit.jupiter.api.Test;
 

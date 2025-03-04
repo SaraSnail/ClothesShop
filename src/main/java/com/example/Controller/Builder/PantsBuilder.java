@@ -1,5 +1,8 @@
-package com.example.Controller;
+package com.example.Controller.Builder;
 
+import com.example.Controller.Enums.Color;
+import com.example.Controller.Enums.Material;
+import com.example.Controller.Enums.Size;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 
 public class PantsBuilder {

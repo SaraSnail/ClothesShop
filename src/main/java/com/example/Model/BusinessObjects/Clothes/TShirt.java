@@ -1,8 +1,8 @@
 package com.example.Model.BusinessObjects.Clothes;
 
-import com.example.Controller.Color;
-import com.example.Controller.Material;
-import com.example.Controller.Size;
+import com.example.Controller.Enums.Color;
+import com.example.Controller.Enums.Material;
+import com.example.Controller.Enums.Size;
 
 public class TShirt extends Clothes{
     private String sleeves;
