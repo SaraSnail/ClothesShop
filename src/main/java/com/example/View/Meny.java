@@ -110,7 +110,7 @@ public class Meny {
                 material = Material.fromValue(chooseEnum(MATERIALS,"material"));
                 color = Color.fromValue(chooseEnum(COLORS,"color"));
 
-                Pants pants = pantsBuilder
+                Pants pants = (Pants) pantsBuilder
                         .addSize(size)
                         .addMaterial(material)
                         .addColor(color)
@@ -127,8 +127,9 @@ public class Meny {
                 CommandPipeline pantsPipeline = new CommandPipeline();
                 if(pantsCommand == null){
                     pantsCommand = new PantsCommand();
-                    pantsPipeline.addCommand(pantsCommand);
                 }
+
+                pantsPipeline.addCommand(pantsCommand);
 
                 pants = (Pants) pantsPipeline.execute(pants);
 
@@ -146,7 +147,7 @@ public class Meny {
                 material = Material.fromValue(chooseEnum(MATERIALS,"material"));
                 color = Color.fromValue(chooseEnum(COLORS,"color"));
 
-                TShirt tShirt = tShirtBuilder
+                TShirt tShirt = (TShirt) tShirtBuilder
                         .addSize(size)
                         .addMaterial(material)
                         .addColor(color)
@@ -158,8 +159,9 @@ public class Meny {
                 CommandPipeline tShirtPipeline = new CommandPipeline();
                 if(tShirtCommand == null){
                     tShirtCommand = new TShirtCommand();
-                    tShirtPipeline.addCommand(tShirtCommand);
                 }
+
+                tShirtPipeline.addCommand(tShirtCommand);
 
                 tShirt = (TShirt) tShirtPipeline.execute(tShirt);
 
@@ -175,7 +177,7 @@ public class Meny {
                 color = Color.fromValue(chooseEnum(COLORS,"color"));
 
 
-                Skirt skirt = skirtBuilder
+                Skirt skirt = (Skirt) skirtBuilder
                         .addSize(size)
                         .addMaterial(material)
                         .addColor(color)
@@ -192,8 +194,8 @@ public class Meny {
                 CommandPipeline skirtPipeline = new CommandPipeline();
                 if(skirtCommand == null){
                     skirtCommand = new SkirtCommand();
-                    skirtPipeline.addCommand(skirtCommand);
                 }
+                skirtPipeline.addCommand(skirtCommand);
 
                 skirt = (Skirt) skirtPipeline.execute(skirt);
 

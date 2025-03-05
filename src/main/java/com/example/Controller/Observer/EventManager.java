@@ -31,7 +31,9 @@ public class EventManager {
     public void notifyListeners(String news) {
         this.news = news;
         for (Worker listener : listeners) {
+            System.out.println();
             listener.update(this.news);
+            System.out.println();
         }
     }
 

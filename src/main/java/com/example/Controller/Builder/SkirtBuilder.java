@@ -4,10 +4,19 @@ import com.example.Controller.Enums.Color;
 import com.example.Controller.Enums.Material;
 import com.example.Controller.Enums.Size;
 import com.example.Controller.Observer.EventManager;
+import com.example.Model.BusinessObjects.Clothes.Clothes;
 import com.example.Model.BusinessObjects.Clothes.Skirt;
 
-public class SkirtBuilder {
-    private Skirt skirt = new Skirt();
+public class SkirtBuilder extends ClothesBuilder{
+    @Override
+    protected Clothes createClothes() {
+        eventManager.notifyListeners("Skirt started creation");
+        return new Skirt();
+    }
+
+
+
+    /*private Skirt skirt = new Skirt();
     private EventManager eventManager = EventManager.getInstance();
 
     public SkirtBuilder() {
@@ -40,5 +49,5 @@ public class SkirtBuilder {
             throw new NullPointerException("No color chosen");
         }
         return skirt;
-    }
+    }*/
 }

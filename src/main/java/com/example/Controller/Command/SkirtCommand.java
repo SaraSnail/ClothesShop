@@ -10,6 +10,7 @@ public class SkirtCommand implements ClothesProcessingCommand {
     public Clothes process(Clothes clothes) {
         if(clothes instanceof Skirt){
             clothes = addWaistline(clothes);
+            System.out.println();
             clothes = addPattern(clothes);
             return clothes;
         }else {
@@ -21,30 +22,30 @@ public class SkirtCommand implements ClothesProcessingCommand {
 
     private Clothes addWaistline(Clothes clothes){
         System.out.println("[WAISTLINE]");
-        System.out.println("1. Stretchy\n2. Firm fit");
+        System.out.println("1. STRETCHY\n2. FIRM FIT");
         int waistlineChoice = Util.getValidChoice(2);
         if(waistlineChoice == 1){
-            ((Skirt) clothes).setWaistline("Stretchy");
+            ((Skirt) clothes).setWaistline("STRETCHY");
         }else if(waistlineChoice == 2){
-            ((Skirt) clothes).setWaistline("Firm fit");
+            ((Skirt) clothes).setWaistline("FIRM FIT");
         }
 
-        System.out.println("Measuring out the waistline to be " + ((Skirt) clothes).getWaistline());
+        System.out.println("Measuring out the waistline to be " + ((Skirt) clothes).getWaistline().toLowerCase());
 
         return clothes;
     }
 
     private Clothes addPattern(Clothes clothes){
         System.out.println("[PATTERN]");
-        System.out.println("1. One color\n2. Striped");
+        System.out.println("1. SINGULAR COLOR\n2. STRIPED");
         int patternChoice = Util.getValidChoice(2);
         if(patternChoice == 1){
-            ((Skirt) clothes).setPattern("One color");
+            ((Skirt) clothes).setPattern(" SINGULAR COLOR");
         }else if(patternChoice == 2){
-            ((Skirt) clothes).setPattern("Striped");
+            ((Skirt) clothes).setPattern("STRIPED");
         }
 
-        System.out.println("Cutting from the " + ((Skirt)clothes).getPattern() + " pattern");
+        System.out.println("Cutting from the " + ((Skirt)clothes).getPattern().toLowerCase() + " pattern");
 
         return clothes;
     }

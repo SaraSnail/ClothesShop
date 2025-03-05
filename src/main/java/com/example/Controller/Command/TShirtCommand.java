@@ -10,6 +10,7 @@ public class TShirtCommand implements ClothesProcessingCommand {
     public Clothes process(Clothes clothes) {
         if(clothes.getName().equals("T-Shirt")){
             clothes = addSleeve(clothes);
+            System.out.println();
             clothes = addNeck(clothes);
             return clothes;
         }else {
@@ -21,29 +22,29 @@ public class TShirtCommand implements ClothesProcessingCommand {
 
     private Clothes addNeck(Clothes clothes) {
         System.out.println("[NECK]");
-        System.out.println("1. Loose\n2. Tight");
+        System.out.println("1. CIRCLE\n2. V");
         int neckChoice = Util.getValidChoice(2);
         if(neckChoice == 1){
-            ((TShirt)clothes).setNeck("Loose");
+            ((TShirt)clothes).setNeck("CIRCLE");
         }else if(neckChoice == 2){
-            ((TShirt)clothes).setNeck("Tight");
+            ((TShirt)clothes).setNeck("V");
         }
-        System.out.println("Measuring out the neck to be " + ((TShirt)clothes).getNeck());
+        System.out.println("Measuring out the neck to be " + ((TShirt)clothes).getNeck().toLowerCase());
 
         return clothes;
     }
 
     private Clothes addSleeve(Clothes clothes) {
         System.out.println("[SLEEVES]");
-        System.out.println("1. Long\n2. Short");
+        System.out.println("1. LONG\n2. SHORT");
         int sleevesChoice = Util.getValidChoice(2);
         if(sleevesChoice == 1){
-            ((TShirt)clothes).setSleeves("Long");
+            ((TShirt)clothes).setSleeves("LONG");
         }else if(sleevesChoice == 2){
-            ((TShirt)clothes).setSleeves("Short");
+            ((TShirt)clothes).setSleeves("SHORT");
         }
 
-        System.out.println("Cutting out the sleeves to be " + ((TShirt)clothes).getSleeves());
+        System.out.println("Cutting out the sleeves to be " + ((TShirt)clothes).getSleeves().toLowerCase());
         return clothes;
     }
 }

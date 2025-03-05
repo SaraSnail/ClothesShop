@@ -23,7 +23,6 @@ public class CommandPipeline {
 
         for(ClothesProcessingCommand command : pipeline) {
             result = command.process(result);
-            System.out.println();
 
         }
         eventManager.notifyListeners(clothes.getName() + " created");

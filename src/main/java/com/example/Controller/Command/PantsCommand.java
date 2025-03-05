@@ -13,8 +13,8 @@ public class PantsCommand implements ClothesProcessingCommand {
 
         } else if (clothes.getName().equals("Pants")) {
 
-            //System.out.println(clothes.getName() + clothes.getId());
             clothes = addFit(clothes);
+            System.out.println();
             clothes = addLength(clothes);
 
             return clothes;
@@ -30,18 +30,18 @@ public class PantsCommand implements ClothesProcessingCommand {
     private Clothes addFit(Clothes clothes) {
 
         System.out.println("[FIT]");
-        System.out.println("1. Loose\n2. Tight");
+        System.out.println("1. LOOSE\n2. TIGHT");
         int choice = Util.getValidChoice(2);
         if(choice == 1){
-            ((Pants)clothes).setFit("Loose");
+            ((Pants)clothes).setFit("LOOSE");
         }else if(choice == 2){
-            ((Pants)clothes).setFit("Tight");
+            ((Pants)clothes).setFit("TIGHT");
         }
 
         /*String fit = (choice == 1) ? "Loose" : "Tight";
         ((Pants) clothes).setFit(fit);*/
 
-        System.out.println("Measuring out a "+((Pants)clothes).getFit()+" fit");
+        System.out.println("Measuring out a "+((Pants)clothes).getFit().toLowerCase()+" fit");
 
         return clothes;
     }
@@ -49,15 +49,15 @@ public class PantsCommand implements ClothesProcessingCommand {
     private Clothes addLength(Clothes clothes) {
 
         System.out.println("[LENGTH]");
-        System.out.println("1. Long\n2. Short");
+        System.out.println("1. LONG\n2. SHORT");
         int choice = Util.getValidChoice(2);
         if(choice == 1){
-            ((Pants) clothes).setLength("Long");
+            ((Pants) clothes).setLength("LONG");
         }else if(choice == 2){
-            ((Pants) clothes).setLength("Short");
+            ((Pants) clothes).setLength("SHORT");
         }
 
-        System.out.println("Cutting the pants to be " + ((Pants) clothes).getLength());
+        System.out.println("Cutting the pants to be " + ((Pants) clothes).getLength().toLowerCase());
 
         return clothes;
     }
