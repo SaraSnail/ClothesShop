@@ -25,35 +25,42 @@ public class Receipt extends BusinessObject{
         NumberFormat numberFormat = NumberFormat.getInstance();
         numberFormat.setMaximumFractionDigits(2);
 
-        System.out.println(this.id);
+        System.out.println("\n------------------------");
+        System.out.println("\t\t"+this.name + this.id);
         System.out.println("To: " + order.getCustomer().getMail());
-        System.out.println("----------"+order.getName()+" "+ order.getId() + "----------");
         System.out.println(order.getCustomer().getName());
+        System.out.println("------------------------");
+        System.out.println("\t\t"+order.getName()+" "+ order.getId());
         System.out.println("------------------------");
         for (int i = 0; i < order.getClothesList().size(); i++) {
 
 
-            System.out.println("Garment " + order.getClothesList().get(i).getId());
+            System.out.println("\t\tGarment " + order.getClothesList().get(i).getId());
             System.out.println(order.getClothesList().get(i).getName());
-            System.out.println("\t"+order.getClothesList().get(i).getColor().toString().toLowerCase());
+            /*System.out.println("\t"+order.getClothesList().get(i).getColor().toString().toLowerCase());
             System.out.println("\t"+order.getClothesList().get(i).getSize().toString().toLowerCase());
-            System.out.println("\t"+order.getClothesList().get(i).getMaterial().toString().toLowerCase());
+            System.out.println("\t"+order.getClothesList().get(i).getMaterial().toString().toLowerCase());*/
+
+            System.out.println("\t"+order.getClothesList().get(i).getColor());
+            System.out.println("\t"+order.getClothesList().get(i).getSize());
+            System.out.println("\t"+order.getClothesList().get(i).getMaterial());
 
             if(order.getClothesList().get(i).getName().equals("Pants")){
                 //Kan få de specifika för de sortens plagg
                 Pants pants = (Pants)order.getClothesList().get(i);
-                System.out.println("\t"+pants.getFit().toLowerCase());
-                System.out.println("\t"+pants.getLength());
+                //System.out.println("\t"+pants.getFit().toLowerCase());
+                System.out.println("\t"+pants.getFit().toUpperCase());
+                System.out.println("\t"+pants.getLength().toUpperCase());
 
             } else if (order.getClothesList().get(i).getName().equals("T-Shirt")) {
                 TShirt tShirt = (TShirt)order.getClothesList().get(i);
-                System.out.println("\t"+tShirt.getSleeves());
-                System.out.println("\t"+tShirt.getNeck());
+                System.out.println("\t"+tShirt.getSleeves().toUpperCase());
+                System.out.println("\t"+tShirt.getNeck().toUpperCase());
 
             }else if(order.getClothesList().get(i).getName().equals("Skirt")){
                 Skirt skirt = (Skirt)order.getClothesList().get(i);
-                System.out.println("\t"+skirt.getWaistline());
-                System.out.println("\t"+skirt.getPattern());
+                System.out.println("\t"+skirt.getWaistline().toUpperCase());
+                System.out.println("\t"+skirt.getPattern().toUpperCase());
             }
 
             System.out.println("\t\t\t"+order.getClothesList().get(i).getPrice() + " kr");

@@ -7,8 +7,16 @@ import java.util.List;
 public class EventManager {
     private String news;
     private List<Worker> listeners = new ArrayList<>();
+    private static EventManager instance;
 
-    public EventManager() {
+    public static EventManager getInstance() {
+        if (instance == null) {
+            instance = new EventManager();
+        }
+        return instance;
+    }
+
+    private EventManager() {
 
     }
 
@@ -26,4 +34,6 @@ public class EventManager {
             listener.update(this.news);
         }
     }
+
+
 }

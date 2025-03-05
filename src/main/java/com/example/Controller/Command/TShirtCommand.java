@@ -6,7 +6,6 @@ import com.example.Model.BusinessObjects.Clothes.TShirt;
 
 public class TShirtCommand implements ClothesProcessingCommand {
 
-
     @Override
     public Clothes process(Clothes clothes) {
         if(clothes.getName().equals("T-Shirt")){
@@ -21,7 +20,8 @@ public class TShirtCommand implements ClothesProcessingCommand {
 
 
     private Clothes addNeck(Clothes clothes) {
-        System.out.println("Neck\n1. Loose\n2. Tight");
+        System.out.println("[NECK]");
+        System.out.println("1. Loose\n2. Tight");
         int neckChoice = Util.getValidChoice(2);
         if(neckChoice == 1){
             ((TShirt)clothes).setNeck("Loose");
@@ -34,7 +34,8 @@ public class TShirtCommand implements ClothesProcessingCommand {
     }
 
     private Clothes addSleeve(Clothes clothes) {
-        System.out.println("Sleeves\n1. Long\n2. Short");
+        System.out.println("[SLEEVES]");
+        System.out.println("1. Long\n2. Short");
         int sleevesChoice = Util.getValidChoice(2);
         if(sleevesChoice == 1){
             ((TShirt)clothes).setSleeves("Long");

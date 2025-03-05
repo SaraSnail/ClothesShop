@@ -4,6 +4,7 @@ import com.example.Controller.Observer.Worker;
 
 public class CEO extends BusinessObject implements Worker {//implements PropertyChangeListener
     //Observer: ska notifieras när kläder beställts osv
+    private String news;
 
 
     public CEO() {
@@ -22,10 +23,17 @@ public class CEO extends BusinessObject implements Worker {//implements Property
     }*/
 
     @Override
-    public void update(String news){
-        System.out.println("CEO got the news: " + news);
+    public void update(Object news){
+        this.setNews((String)news);
+        System.out.println("CEO "+this.name +" got the news: " + news);
         //https://www.baeldung.com/java-observer-pattern
     }
 
+    public String getNews() {
+        return news;
+    }
 
+    public void setNews(String news) {
+        this.news = news;
+    }
 }

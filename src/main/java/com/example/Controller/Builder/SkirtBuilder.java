@@ -3,13 +3,15 @@ package com.example.Controller.Builder;
 import com.example.Controller.Enums.Color;
 import com.example.Controller.Enums.Material;
 import com.example.Controller.Enums.Size;
+import com.example.Controller.Observer.EventManager;
 import com.example.Model.BusinessObjects.Clothes.Skirt;
 
 public class SkirtBuilder {
     private Skirt skirt = new Skirt();
+    private EventManager eventManager = EventManager.getInstance();
 
-    public SkirtBuilder(){
-
+    public SkirtBuilder() {
+        eventManager.notifyListeners("Skirt creation started");
     }
 
     public SkirtBuilder addSize(Size size){

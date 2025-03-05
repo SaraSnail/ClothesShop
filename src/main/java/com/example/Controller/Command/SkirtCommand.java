@@ -5,6 +5,7 @@ import com.example.Model.BusinessObjects.Clothes.Clothes;
 import com.example.Model.BusinessObjects.Clothes.Skirt;
 
 public class SkirtCommand implements ClothesProcessingCommand {
+
     @Override
     public Clothes process(Clothes clothes) {
         if(clothes instanceof Skirt){
@@ -19,7 +20,8 @@ public class SkirtCommand implements ClothesProcessingCommand {
 
 
     private Clothes addWaistline(Clothes clothes){
-        System.out.println("Waistline\n1. Stretchy\n2. Firm fit");
+        System.out.println("[WAISTLINE]");
+        System.out.println("1. Stretchy\n2. Firm fit");
         int waistlineChoice = Util.getValidChoice(2);
         if(waistlineChoice == 1){
             ((Skirt) clothes).setWaistline("Stretchy");
@@ -33,7 +35,8 @@ public class SkirtCommand implements ClothesProcessingCommand {
     }
 
     private Clothes addPattern(Clothes clothes){
-        System.out.println("Pattern\n1. One color\n2. Striped");
+        System.out.println("[PATTERN]");
+        System.out.println("1. One color\n2. Striped");
         int patternChoice = Util.getValidChoice(2);
         if(patternChoice == 1){
             ((Skirt) clothes).setPattern("One color");

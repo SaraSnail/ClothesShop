@@ -5,7 +5,6 @@ import com.example.Model.BusinessObjects.Clothes.Clothes;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 
 public class PantsCommand implements ClothesProcessingCommand {
-    //private Scanner scanner = new Scanner(System.in);
 
     @Override
     public Clothes process(Clothes clothes) {
@@ -14,7 +13,7 @@ public class PantsCommand implements ClothesProcessingCommand {
 
         } else if (clothes.getName().equals("Pants")) {
 
-            System.out.println(clothes.getName() + clothes.getId());
+            //System.out.println(clothes.getName() + clothes.getId());
             clothes = addFit(clothes);
             clothes = addLength(clothes);
 
@@ -30,6 +29,7 @@ public class PantsCommand implements ClothesProcessingCommand {
 
     private Clothes addFit(Clothes clothes) {
 
+        System.out.println("[FIT]");
         System.out.println("1. Loose\n2. Tight");
         int choice = Util.getValidChoice(2);
         if(choice == 1){
@@ -48,6 +48,7 @@ public class PantsCommand implements ClothesProcessingCommand {
 
     private Clothes addLength(Clothes clothes) {
 
+        System.out.println("[LENGTH]");
         System.out.println("1. Long\n2. Short");
         int choice = Util.getValidChoice(2);
         if(choice == 1){

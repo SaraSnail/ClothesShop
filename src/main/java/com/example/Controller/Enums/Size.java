@@ -1,7 +1,6 @@
 package com.example.Controller.Enums;
 
 public enum Size {
-    //Example
     SMALL(1), MEDIUM(2), LARGE(3);
 
     int value;

@@ -23,20 +23,21 @@ import com.example.Model.BusinessObjects.Receipt;
 import java.util.Scanner;
 
 public class Meny {
-    private static String[] sizes = {String.valueOf(Size.fromValue(1)),String.valueOf(Size.fromValue(2)),String.valueOf(Size.fromValue(3))};
-    private static String[] materials = {String.valueOf(Material.fromValue(1)),String.valueOf(Material.fromValue(2)),String.valueOf(Material.fromValue(3))};
-    private static String[] colors = {String.valueOf(Color.fromValue(1)),String.valueOf(Color.fromValue(2)),String.valueOf(Color.fromValue(3))};
+    private static final String[] SIZES = {String.valueOf(Size.fromValue(1)),String.valueOf(Size.fromValue(2)),String.valueOf(Size.fromValue(3))};
+    private static final String[] MATERIALS = {String.valueOf(Material.fromValue(1)),String.valueOf(Material.fromValue(2)),String.valueOf(Material.fromValue(3))};
+    private static final String[] COLORS = {String.valueOf(Color.fromValue(1)),String.valueOf(Color.fromValue(2)),String.valueOf(Color.fromValue(3))};
     private static Scanner scanner = new Scanner(System.in);
 
     private static PantsCommand pantsCommand;
     private static TShirtCommand tShirtCommand;
     private static SkirtCommand skirtCommand;
-    private static EventManager eventManager = new EventManager();
+    private static EventManager eventManager = EventManager.getInstance();
 
     public static void main(String[] args) {
 
         CEO ceo = new CEO(1,"Josefin Flodin");
         eventManager.addListener(ceo);
+
 
         int id = 1;
 
@@ -50,10 +51,9 @@ public class Meny {
         Customer customer = new Customer(id,fullName,adress,mail);
 
         Order order = new Order();
-
-
         order.setId(id);
         order.setCustomer(customer);
+
         System.out.println("Nice to meet you " + fullName);
 
 
@@ -83,7 +83,6 @@ public class Meny {
 
             }
 
-
         }
 
 
@@ -104,13 +103,12 @@ public class Meny {
         switch (clothesType){
             case 1:
                 //Pants
-                eventManager.notifyListeners("Starting to create pants");
 
                 PantsBuilder pantsBuilder = new PantsBuilder();
 
-                size = Size.fromValue(chooseEnum(sizes,"size"));
-                material = Material.fromValue(chooseEnum(materials,"material"));
-                color = Color.fromValue(chooseEnum(colors,"color"));
+                size = Size.fromValue(chooseEnum(SIZES,"size"));
+                material = Material.fromValue(chooseEnum(MATERIALS,"material"));
+                color = Color.fromValue(chooseEnum(COLORS,"color"));
 
                 Pants pants = pantsBuilder
                         .addSize(size)
@@ -136,18 +134,17 @@ public class Meny {
 
                 pants.setId(id);
 
-                eventManager.notifyListeners("Pants created");
                 order.getClothesList().add(pants);
 
                 break;
             case 2:
                 //TShirt
-                eventManager.notifyListeners("Starting to create a t-shirt");
+
                 TShirtBuilder tShirtBuilder = new TShirtBuilder();
 
-                size = Size.fromValue(chooseEnum(sizes,"size"));
-                material = Material.fromValue(chooseEnum(materials,"material"));
-                color = Color.fromValue(chooseEnum(colors,"color"));
+                size = Size.fromValue(chooseEnum(SIZES,"size"));
+                material = Material.fromValue(chooseEnum(MATERIALS,"material"));
+                color = Color.fromValue(chooseEnum(COLORS,"color"));
 
                 TShirt tShirt = tShirtBuilder
                         .addSize(size)
@@ -167,17 +164,15 @@ public class Meny {
                 tShirt = (TShirt) tShirtPipeline.execute(tShirt);
 
                 tShirt.setId(id);
-                eventManager.notifyListeners("T-Shirt created");
                 order.getClothesList().add(tShirt);
                 break;
 
             case 3:
                 //Skirt
-                eventManager.notifyListeners("Starting to create a skirt");
                 SkirtBuilder skirtBuilder = new SkirtBuilder();
-                size = Size.fromValue(chooseEnum(sizes,"size"));
-                material = Material.fromValue(chooseEnum(materials,"material"));
-                color = Color.fromValue(chooseEnum(colors,"color"));
+                size = Size.fromValue(chooseEnum(SIZES,"size"));
+                material = Material.fromValue(chooseEnum(MATERIALS,"material"));
+                color = Color.fromValue(chooseEnum(COLORS,"color"));
 
 
                 Skirt skirt = skirtBuilder
@@ -203,7 +198,6 @@ public class Meny {
                 skirt = (Skirt) skirtPipeline.execute(skirt);
 
                 skirt.setId(id);
-                eventManager.notifyListeners("Skirt created");
                 order.getClothesList().add(skirt);
                 break;
             default:
