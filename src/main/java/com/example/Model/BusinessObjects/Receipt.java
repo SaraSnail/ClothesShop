@@ -1,6 +1,5 @@
 package com.example.Model.BusinessObjects;
 
-import com.example.Model.BusinessObjects.Clothes.Clothes;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 import com.example.Model.BusinessObjects.Clothes.Skirt;
 import com.example.Model.BusinessObjects.Clothes.TShirt;
@@ -9,7 +8,7 @@ import java.text.NumberFormat;
 
 public class Receipt extends BusinessObject{
     //Skriva ut order snyggt
-    private Order order;//För flera ordrar kanske ta in en List<Order>orders?
+    private Order order;
 
     public Receipt() {
         this.name = "Receipt";
@@ -37,10 +36,6 @@ public class Receipt extends BusinessObject{
 
             System.out.println("\t\tGarment " + order.getClothesList().get(i).getId());
             System.out.println(order.getClothesList().get(i).getName());
-            /*System.out.println("\t"+order.getClothesList().get(i).getColor().toString().toLowerCase());
-            System.out.println("\t"+order.getClothesList().get(i).getSize().toString().toLowerCase());
-            System.out.println("\t"+order.getClothesList().get(i).getMaterial().toString().toLowerCase());*/
-
             System.out.println("\t"+order.getClothesList().get(i).getSize());
             System.out.println("\t"+order.getClothesList().get(i).getMaterial());
             System.out.println("\t"+order.getClothesList().get(i).getColor());

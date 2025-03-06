@@ -8,6 +8,8 @@ import com.example.Model.BusinessObjects.Clothes.Clothes;
 
 public abstract class ClothesBuilder {
     protected EventManager eventManager = EventManager.getInstance();
+
+    //Override för att inte skapa Clothes utan Pants/TShirt/Skirt
     protected Clothes clothes = createClothes();
 
     protected abstract Clothes createClothes();

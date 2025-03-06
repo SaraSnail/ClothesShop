@@ -2,6 +2,7 @@ package com.example.Controller.Enums;
 
 import com.example.Controller.Builder.PantsBuilder;
 import com.example.Model.BusinessObjects.Clothes.Pants;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,10 +10,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class SizeTest {
     //Skriva test för denna istället?
 
+    private PantsBuilder builder;
+    private Pants pants;
+
+    @BeforeEach
+    public void setUp() {
+        builder = new PantsBuilder();
+        pants = new Pants();
+    }
+
     @Test
     void getValueMediumIfSizeIsMedium() {
-        PantsBuilder builder = new PantsBuilder();
-        Pants pants = (Pants) builder
+
+        pants = (Pants) builder
                 .addSize(Size.MEDIUM)
                 .addMaterial(Material.COTTON)
                 .addColor(Color.BLACK)
@@ -23,8 +33,8 @@ class SizeTest {
 
     @Test
     void fromValueTwoShouldReturnMedium() {
-        PantsBuilder builder = new PantsBuilder();
-        Pants pants = (Pants) builder
+
+        pants = (Pants) builder
                 .addSize(Size.fromValue(2))
                 .addMaterial(Material.COTTON)
                 .addColor(Color.BLACK)
@@ -35,7 +45,6 @@ class SizeTest {
 
     @Test
     void fromValueFourShouldReturnIllegalArgumentException() {
-        PantsBuilder builder = new PantsBuilder();
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
                 builder.addSize(Size.fromValue(4)));
 
