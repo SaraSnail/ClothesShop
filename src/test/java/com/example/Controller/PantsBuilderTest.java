@@ -17,7 +17,7 @@ class PantsBuilderTest {
     @Test
     void noExceptionInBuild() {
         PantsBuilder builder = new PantsBuilder();
-        Pants pants = builder
+        Pants pants = (Pants) builder
                 .addSize(Size.MEDIUM)
                 .addMaterial(Material.JEANS)
                 .addColor(Color.BLACK)
@@ -33,7 +33,7 @@ class PantsBuilderTest {
         PantsBuilder builder = new PantsBuilder();
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
-            Pants pants = builder
+            Pants pants = (Pants) builder
                     .addColor(Color.BLACK)
                     .addMaterial(Material.JEANS)
                     .build();
@@ -48,7 +48,7 @@ class PantsBuilderTest {
         PantsBuilder builder = new PantsBuilder();
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
-            Pants pants = builder
+            Pants pants = (Pants) builder
                     .addSize(Size.MEDIUM)
                     .addColor(Color.BLACK)
                     .build();
@@ -63,7 +63,7 @@ class PantsBuilderTest {
         PantsBuilder builder = new PantsBuilder();
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
-            Pants pants = builder
+            Pants pants = (Pants) builder
                     .addSize(Size.MEDIUM)
                     .addMaterial(Material.JEANS)
                     .build();

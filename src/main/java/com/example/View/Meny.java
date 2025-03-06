@@ -35,12 +35,14 @@ public class Meny {
 
     public static void main(String[] args) {
 
+        //Controller
         CEO ceo = new CEO(1,"Josefin Flodin");
         eventManager.addListener(ceo);
 
 
         int id = 1;
 
+        //View?
         System.out.println("Welcome! Please enter the following materials:");
         System.out.print("Full name: ");
         String fullName = scanner.nextLine();
@@ -48,13 +50,15 @@ public class Meny {
         String adress = scanner.nextLine();
         System.out.print("Mail: ");
         String mail = scanner.nextLine();
-        Customer customer = new Customer(id,fullName,adress,mail);
 
-        Order order = new Order();
-        order.setId(id);
-        order.setCustomer(customer);
+        /*Customer customer = new Customer(id,fullName,adress,mail);
 
-        System.out.println("Nice to meet you " + fullName);
+        Order order = new Order(id,"Order");
+        order.setCustomer(customer);*/
+
+        Order order = createCustomerAndOrder(id,fullName,adress,mail);
+
+        System.out.println("Nice to meet you " + order.getCustomer().getName());
 
 
         boolean addClothes = true;
@@ -95,6 +99,15 @@ public class Meny {
 
     }
 
+    //Controller
+    private static Order createCustomerAndOrder(int id,String fullName,String adress,String mail){
+        Customer customer = new Customer(id,fullName,adress,mail);
+        Order order = new Order(id,"Order");
+        order.setCustomer(customer);
+        return order;
+    }
+
+    //Controller
     private static void createClothes(int clothesType, Order order, int id){
         Size size;
         Material material;
@@ -208,6 +221,7 @@ public class Meny {
         }
     }
 
+    //Controller/View
     private static int chooseEnum(String[] choices, String type) {
 
         System.out.println("["+type.toUpperCase()+"]");

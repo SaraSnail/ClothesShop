@@ -12,7 +12,7 @@ class SizeTest {
     @Test
     void getValueMediumIfSizeIsMedium() {
         PantsBuilder builder = new PantsBuilder();
-        Pants pants = builder
+        Pants pants = (Pants) builder
                 .addSize(Size.MEDIUM)
                 .addMaterial(Material.COTTON)
                 .addColor(Color.BLACK)
@@ -24,7 +24,7 @@ class SizeTest {
     @Test
     void fromValueTwoShouldReturnMedium() {
         PantsBuilder builder = new PantsBuilder();
-        Pants pants = builder
+        Pants pants = (Pants) builder
                 .addSize(Size.fromValue(2))
                 .addMaterial(Material.COTTON)
                 .addColor(Color.BLACK)

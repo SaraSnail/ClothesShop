@@ -40,7 +40,7 @@ public class SkirtCommand implements ClothesProcessingCommand {
         System.out.println("1. SINGULAR COLOR\n2. STRIPED");
         int patternChoice = Util.getValidChoice(2);
         if(patternChoice == 1){
-            ((Skirt) clothes).setPattern(" SINGULAR COLOR");
+            ((Skirt) clothes).setPattern("SINGULAR COLOR");
         }else if(patternChoice == 2){
             ((Skirt) clothes).setPattern("STRIPED");
         }
