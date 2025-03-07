@@ -37,7 +37,6 @@ class PantsBuilderTest {
 
     }
 
-    //Skarp
     @Test
     void catchIfSizeIsNull() {
 

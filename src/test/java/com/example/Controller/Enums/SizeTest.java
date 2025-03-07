@@ -1,54 +1,42 @@
 package com.example.Controller.Enums;
 
-import com.example.Controller.Builder.PantsBuilder;
-import com.example.Model.BusinessObjects.Clothes.Pants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SizeTest {
 
-    private PantsBuilder builder;
-    private Pants pants;
+
+    @Mock
+    private Size size;
 
     @BeforeEach
     public void setUp() {
-        builder = new PantsBuilder();
-        pants = new Pants();
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    void getValueMediumIfSizeIsMedium() {
+    void getValueShouldReturnCorrectValue(){
+        size = Size.SMALL;
+        assertEquals(1, size.getValue());
+    }
 
-        pants = (Pants) builder
-                .addSize(Size.MEDIUM)
-                .addMaterial(Material.COTTON)
-                .addColor(Color.BLACK)
-                .build();
 
-        assertEquals(Size.MEDIUM, pants.getSize());
+    @Test
+    void valueOfOneShouldReturnSmall(){
+        size = Size.fromValue(1);
+        assertEquals(Size.SMALL,size);
     }
 
     @Test
-    void fromValueTwoShouldReturnMedium() {
-
-        pants = (Pants) builder
-                .addSize(Size.fromValue(2))
-                .addMaterial(Material.COTTON)
-                .addColor(Color.BLACK)
-                .build();
-
-        assertEquals(Size.MEDIUM, pants.getSize());
-    }
-
-    @Test
-    void fromValueFourShouldReturnIllegalArgumentException() {
+    void valueFourShouldReturnIllegalArgumentException(){
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
-                builder.addSize(Size.fromValue(4)));
-
+                size = Size.fromValue(4));
 
         assertEquals("Unknown Size value", exception.getMessage());
-    }
 
+    }
 }

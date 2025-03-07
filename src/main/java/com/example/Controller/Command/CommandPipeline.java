@@ -22,6 +22,7 @@ public class CommandPipeline {
         Clothes result = clothes;
 
         for(ClothesProcessingCommand command : pipeline) {
+            System.out.println();
             result = command.process(result);
 
         }

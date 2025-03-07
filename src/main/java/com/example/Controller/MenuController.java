@@ -74,7 +74,7 @@ public class MenuController {
     }
 
     public static void createCEO(){
-        CEO ceo = new CEO(1,"Josefin Flodin");
+        CEO ceo = new CEO(1,"Tomas Wigell");
         eventManager.addListener(ceo);
     }
 

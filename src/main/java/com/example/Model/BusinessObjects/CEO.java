@@ -1,8 +1,8 @@
 package com.example.Model.BusinessObjects;
 
-import com.example.Controller.Observer.Worker;
+import com.example.Controller.Observer.Listener;
 
-public class CEO extends BusinessObject implements Worker {
+public class CEO extends BusinessObject implements Listener {
     private String news;
 
     public CEO() {
@@ -16,7 +16,7 @@ public class CEO extends BusinessObject implements Worker {
     @Override
     public void update(Object news){
         this.setNews((String)news);
-        System.out.println("CEO "+this.name +" got the news: " + news);
+        System.out.println(this.name +" got the news: " + news);
 
     }
 

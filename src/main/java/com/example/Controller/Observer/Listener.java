@@ -1,5 +1,5 @@
 package com.example.Controller.Observer;
 
-public interface Worker {
+public interface Listener {
     public void update(Object news);
 }

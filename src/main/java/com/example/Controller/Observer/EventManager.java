@@ -6,7 +6,7 @@ import java.util.List;
 
 public class EventManager {
     private String news;
-    private List<Worker> listeners = new ArrayList<>();
+    private List<Listener> listeners = new ArrayList<>();
     private static EventManager instance;
 
     public static EventManager getInstance() {
@@ -20,17 +20,17 @@ public class EventManager {
 
     }
 
-    public void addListener(Worker listener) {
+    public void addListener(Listener listener) {
         listeners.add(listener);
     }
 
-    public void removeListener(Worker listener) {
+    public void removeListener(Listener listener) {
         listeners.remove(listener);
     }
 
     public void notifyListeners(String news) {
         this.news = news;
-        for (Worker listener : listeners) {
+        for (Listener listener : listeners) {
             System.out.println();
             listener.update(this.news);
             System.out.println();
