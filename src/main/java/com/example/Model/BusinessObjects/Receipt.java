@@ -7,7 +7,7 @@ import com.example.Model.BusinessObjects.Clothes.TShirt;
 import java.text.NumberFormat;
 
 public class Receipt extends BusinessObject{
-    //Skriva ut order snyggt
+
     private Order order;
 
     public Receipt() {
@@ -18,6 +18,7 @@ public class Receipt extends BusinessObject{
         super(id, name);
         this.order = order;
     }
+
 
     public void printOrder(){
         double total = 0;
@@ -67,6 +68,15 @@ public class Receipt extends BusinessObject{
         System.out.println("Sent to adress: " + order.getCustomer().getAdress());
         System.out.println("Thanks for shopping!");
         System.out.println("\n------------------------");
+    }
+
+    @Override
+    public String toString() {
+        return "Receipt{" +
+                "order=" + order +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     public Order getOrder() {

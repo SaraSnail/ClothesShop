@@ -18,13 +18,13 @@ import com.example.Model.BusinessObjects.Clothes.TShirt;
 import com.example.Model.BusinessObjects.Customer;
 import com.example.Model.BusinessObjects.Order;
 import com.example.Model.BusinessObjects.Receipt;
-import com.example.View.View;
+import com.example.View.MenuView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Controller {
+public class MenuController {
     private static Scanner scanner = new Scanner(System.in);
 
     private static List<String> sizesList = new ArrayList<>();
@@ -57,7 +57,7 @@ public class Controller {
     }
 
     public static int getValidChoice(int maxOptions){
-        int choice = -1;
+        int choice = 0;
         while(choice < 1 || choice > maxOptions){
             try{
                 System.out.print("Enter your choice: ");
@@ -120,9 +120,9 @@ public class Controller {
     private static void createPants(Order order,int id){
         PantsBuilder pantsBuilder = new PantsBuilder();
 
-        Size size = Size.fromValue(View.displayEnumChoices(sizesList,"size"));
-        Material material = Material.fromValue(View.displayEnumChoices(materialList,"material"));
-        Color color = Color.fromValue(View.displayEnumChoices(colorList,"color"));
+        Size size = Size.fromValue(MenuView.displayEnumChoices(sizesList,"size"));
+        Material material = Material.fromValue(MenuView.displayEnumChoices(materialList,"material"));
+        Color color = Color.fromValue(MenuView.displayEnumChoices(colorList,"color"));
 
         Pants pants = (Pants) pantsBuilder
                 .addSize(size)
@@ -145,9 +145,9 @@ public class Controller {
     private static void createTShirt(Order order,int id){
         TShirtBuilder tShirtBuilder = new TShirtBuilder();
 
-        Size size = Size.fromValue(View.displayEnumChoices(sizesList,"size"));
-        Material material = Material.fromValue(View.displayEnumChoices(materialList,"material"));
-        Color color = Color.fromValue(View.displayEnumChoices(colorList,"color"));
+        Size size = Size.fromValue(MenuView.displayEnumChoices(sizesList,"size"));
+        Material material = Material.fromValue(MenuView.displayEnumChoices(materialList,"material"));
+        Color color = Color.fromValue(MenuView.displayEnumChoices(colorList,"color"));
 
         TShirt tShirt = (TShirt) tShirtBuilder
                 .addSize(size)
@@ -170,9 +170,9 @@ public class Controller {
 
     private static void createSkirt(Order order,int id){
         SkirtBuilder skirtBuilder = new SkirtBuilder();
-        Size size = Size.fromValue(View.displayEnumChoices(sizesList,"size"));
-        Material material = Material.fromValue(View.displayEnumChoices(materialList,"material"));
-        Color color = Color.fromValue(View.displayEnumChoices(colorList,"color"));
+        Size size = Size.fromValue(MenuView.displayEnumChoices(sizesList,"size"));
+        Material material = Material.fromValue(MenuView.displayEnumChoices(materialList,"material"));
+        Color color = Color.fromValue(MenuView.displayEnumChoices(colorList,"color"));
 
 
         Skirt skirt = (Skirt) skirtBuilder
@@ -196,9 +196,9 @@ public class Controller {
     }
 
     private static String attributeChoice(String titel, String text){
-        String[] choices = View.displayObjectSpecificAttribute(titel, text);
+        String[] choices = MenuView.displayObjectSpecificAttribute(titel, text);
         int nrChoice = getValidChoice(choices.length);
-        return choices[nrChoice -1].toUpperCase();
+        return choices[nrChoice -1];
     }
 
 

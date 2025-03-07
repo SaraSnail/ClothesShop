@@ -8,7 +8,7 @@ import com.example.Model.BusinessObjects.BusinessObject;
 
 public abstract class Clothes extends BusinessObject {
     protected double price;
-    private Size size;//Kolla på example enum
+    private Size size;
     private Material material;
     private Color color;
 
@@ -40,6 +40,17 @@ public abstract class Clothes extends BusinessObject {
         this.color = color;
     }
 
+    @Override
+    public String toString() {
+        return "Clothes{" +
+                "price=" + price +
+                ", size=" + size +
+                ", material=" + material +
+                ", color=" + color +
+                ", name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 
     public double getPrice() {
         return price;

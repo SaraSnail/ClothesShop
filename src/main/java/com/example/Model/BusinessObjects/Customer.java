@@ -1,13 +1,9 @@
 package com.example.Model.BusinessObjects;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Customer extends BusinessObject{
     private String adress;
     private String mail;
-
-    //private List<Order> orders = new ArrayList<Order>();//Ha flera orders eller en order med flera plagg?
 
     public Customer() {
 
@@ -17,6 +13,16 @@ public class Customer extends BusinessObject{
         super(id, name);
         this.adress = adress;
         this.mail = mail;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "mail='" + mail + '\'' +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", adress='" + adress + '\'' +
+                '}';
     }
 
     public String getAdress() {

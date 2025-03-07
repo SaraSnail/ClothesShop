@@ -6,7 +6,7 @@ import com.example.Model.BusinessObjects.Receipt;
 import java.util.List;
 import java.util.Scanner;
 
-public class View {
+public class MenuView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void displayWelcomeMessage(){
@@ -36,17 +36,6 @@ public class View {
         receipt.printOrder();
     }
 
-    /*public static int displayEnumChoices(String[] choices, String type) {
-
-        System.out.println("["+type.toUpperCase()+"]");
-        for (int i = 0; i < choices.length; i++) {
-            System.out.println((i + 1) + ". " + choices[i]);
-        }
-
-        return Controller.getValidChoice(choices.length);
-
-    }*/
-
     public static int displayEnumChoices(List<String > choices, String type) {
 
         System.out.println("["+type.toUpperCase()+"]");
@@ -54,13 +43,13 @@ public class View {
             System.out.println((i + 1) + ". " + choices.get(i));
         }
 
-        return Controller.getValidChoice(choices.size());
+        return MenuController.getValidChoice(choices.size());
 
     }
 
     public static String[] displayObjectSpecificAttribute(String titel, String text){
 
-        String[] textArray = text.split("/");
+        String[] textArray = text.toUpperCase().split("/");
         int nr = 1;
 
         System.out.println("["+titel.toUpperCase()+"] ");

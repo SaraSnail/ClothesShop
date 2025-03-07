@@ -13,6 +13,14 @@ public abstract class BusinessObject {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "BusinessObject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public BusinessObject(int id) {
         this.id = id;
     }

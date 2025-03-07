@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SizeTest {
-    //Skriva test för denna istället?
 
     private PantsBuilder builder;
     private Pants pants;
