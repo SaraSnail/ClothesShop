@@ -6,17 +6,42 @@ import com.example.Model.Enums.Material;
 import com.example.Model.Enums.Size;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class PantsBuilderTest {
 
     private PantsBuilder pantsBuilder;
 
+    @Mock
+    private Size mockSize;
+    private Material mockMaterial;
+    private Color mockColor;
+    private Pants mockPants;
+
 
     @BeforeEach
     public void setUp() {
         pantsBuilder = new PantsBuilder();
+        mockSize = mock(Size.class);
+        mockMaterial = mock(Material.class);
+        mockColor = mock(Color.class);
+        mockPants = mock(Pants.class);
+        
+    }
+
+    @Test
+    void useVerify(){
+        String sizeString = String.valueOf(mockSize.getValue());
+        verify(mockSize).getValue();
+    }
+
+    @Test
+    void getSizeMediumWithStub(){
+        when(mockPants.getSize()).thenReturn(Size.MEDIUM);
+        assertEquals(Size.MEDIUM, mockPants.getSize());
     }
 
 
@@ -25,9 +50,9 @@ class PantsBuilderTest {
 
         assertDoesNotThrow(() -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addMaterial(Material.JEANS)
-                    .addColor(Color.BLACK)
+                    .addSize(mockSize)
+                    .addMaterial(mockMaterial)
+                    .addColor(mockColor)
                     .build();
         });
 
@@ -38,8 +63,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addColor(Color.BLACK)
-                    .addMaterial(Material.JEANS)
+                    .addColor(mockColor)
+                    .addMaterial(mockMaterial)
                     .build();
         });
 
@@ -52,8 +77,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addColor(Color.BLACK)
-                    .addMaterial(Material.JEANS)
+                    .addColor(mockColor)
+                    .addMaterial(mockMaterial)
                     .build();
         });
 
@@ -65,8 +90,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addColor(Color.BLACK)
+                    .addSize(mockSize)
+                    .addColor(mockColor)
                     .build();
         });
 
@@ -79,8 +104,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addColor(Color.BLACK)
+                    .addSize(mockSize)
+                    .addColor(mockColor)
                     .build();
         });
 
@@ -91,8 +116,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addMaterial(Material.JEANS)
+                    .addSize(mockSize)
+                    .addMaterial(mockMaterial)
                     .build();
         });
 
@@ -105,8 +130,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addMaterial(Material.JEANS)
+                    .addSize(mockSize)
+                    .addMaterial(mockMaterial)
                     .build();
         });
 
@@ -124,9 +149,9 @@ class PantsBuilderTest {
     void pantsBuilderShouldReturnInstanceOfPants() {
 
         assertInstanceOf(Pants.class, pantsBuilder
-                .addSize(Size.MEDIUM)
-                .addMaterial(Material.JEANS)
-                .addColor(Color.BLACK)
+                .addSize(mockSize)
+                .addMaterial(mockMaterial)
+                .addColor(mockColor)
                 .build());
     }
 
