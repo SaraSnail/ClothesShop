@@ -1,25 +1,16 @@
 package com.example.Controller.Enums;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SizeTest {
 
-
-    @Mock
     private Size size;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
     @Test
-    void getValueShouldReturnCorrectValue(){
+    void valueSmallShouldHaveIntegerValueOne(){
         size = Size.SMALL;
         assertEquals(1, size.getValue());
     }
@@ -32,7 +23,40 @@ class SizeTest {
     }
 
     @Test
-    void valueFourShouldReturnIllegalArgumentException(){
+    void valueMediumShouldHaveIntegerValueTwo(){
+        size = Size.MEDIUM;
+        assertEquals(2, size.getValue());
+    }
+
+
+    @Test
+    void valueOfTwoShouldReturnMedium(){
+        size = Size.fromValue(2);
+        assertEquals(Size.MEDIUM,size);
+    }
+
+    @Test
+    void valueLargeShouldHaveIntegerValueThree(){
+        size = Size.LARGE;
+        assertEquals(3, size.getValue());
+    }
+
+
+    @Test
+    void valueOfThreeShouldReturnLarge(){
+        size = Size.fromValue(3);
+        assertEquals(Size.LARGE,size);
+    }
+
+    @Test
+    void fromValueFourForASizeShouldReturnIllegalArgumentException(){
+        assertThrows(IllegalArgumentException.class, () ->
+                size = Size.fromValue(4));
+
+    }
+
+    @Test
+    void fromValueFourForASizeShouldReturnIllegalArgumentExceptionCorrectMessage(){
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
                 size = Size.fromValue(4));
 
