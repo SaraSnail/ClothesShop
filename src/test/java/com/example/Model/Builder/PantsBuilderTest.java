@@ -121,13 +121,19 @@ class PantsBuilderTest {
     }
 
     @Test
-    void createClothesMethodShouldReturnInstanceOfPants() {
+    void pantsBuilderShouldReturnInstanceOfPants() {
 
         assertInstanceOf(Pants.class, pantsBuilder
                 .addSize(Size.MEDIUM)
                 .addMaterial(Material.JEANS)
                 .addColor(Color.BLACK)
                 .build());
+    }
+
+    @Test
+    void createClothesMethodShouldReturnInstanceOfPants1() {
+
+        assertInstanceOf(Pants.class, pantsBuilder.createClothes());
     }
 
 }
