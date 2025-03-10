@@ -1,4 +1,4 @@
-package com.example.Controller.Enums;
+package com.example.Model.Enums;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,4 +63,5 @@ class SizeTest {
         assertEquals("Unknown Size value", exception.getMessage());
 
     }
+
 }

@@ -1,7 +1,7 @@
 package com.example.Model.BusinessObjects;
 
 
-public class Customer extends BusinessObject{
+public class Customer extends BusinessObject {
     private String adress;
     private String mail;
 

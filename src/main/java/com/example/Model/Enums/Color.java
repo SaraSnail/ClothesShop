@@ -1,4 +1,4 @@
-package com.example.Controller.Enums;
+package com.example.Model.Enums;
 
 public enum Color {
     BLACK(1), WHITE(2), BLUE(3);

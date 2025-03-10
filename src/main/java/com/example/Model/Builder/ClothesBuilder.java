@@ -1,9 +1,9 @@
-package com.example.Controller.Builder;
+package com.example.Model.Builder;
 
-import com.example.Controller.Enums.Color;
-import com.example.Controller.Enums.Material;
-import com.example.Controller.Enums.Size;
-import com.example.Controller.Observer.EventManager;
+import com.example.Model.Enums.Color;
+import com.example.Model.Enums.Material;
+import com.example.Model.Enums.Size;
+import com.example.Model.Observer.EventManager;
 import com.example.Model.BusinessObjects.Clothes.Clothes;
 
 public abstract class ClothesBuilder {

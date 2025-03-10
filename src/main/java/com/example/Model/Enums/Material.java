@@ -1,4 +1,4 @@
-package com.example.Controller.Enums;
+package com.example.Model.Enums;
 
 public enum Material {
     COTTON(1),POLYESTER(2),JEANS(3);

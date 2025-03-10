@@ -1,4 +1,4 @@
-package com.example.Controller.Builder;
+package com.example.Model.Builder;
 
 import com.example.Model.BusinessObjects.Clothes.Clothes;
 import com.example.Model.BusinessObjects.Clothes.TShirt;

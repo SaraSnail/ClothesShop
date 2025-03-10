@@ -1,9 +1,9 @@
-package com.example.Controller.Builder;
+package com.example.Model.Builder;
 
-import com.example.Controller.Enums.Color;
-import com.example.Controller.Enums.Material;
-import com.example.Controller.Enums.Size;
 import com.example.Model.BusinessObjects.Clothes.Pants;
+import com.example.Model.Enums.Color;
+import com.example.Model.Enums.Material;
+import com.example.Model.Enums.Size;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +24,11 @@ class PantsBuilderTest {
     void noExceptionInBuild() {
 
         assertDoesNotThrow(() -> {
-                pantsBuilder
-                .addSize(Size.MEDIUM)
-                .addMaterial(Material.JEANS)
-                .addColor(Color.BLACK)
-                .build();
+            pantsBuilder
+                    .addSize(Size.MEDIUM)
+                    .addMaterial(Material.JEANS)
+                    .addColor(Color.BLACK)
+                    .build();
         });
 
     }
@@ -129,7 +129,5 @@ class PantsBuilderTest {
                 .addColor(Color.BLACK)
                 .build());
     }
-
-
 
 }

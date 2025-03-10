@@ -1,8 +1,8 @@
 package com.example.Model.BusinessObjects.Clothes;
 
-import com.example.Controller.Enums.Color;
-import com.example.Controller.Enums.Material;
-import com.example.Controller.Enums.Size;
+import com.example.Model.Enums.Color;
+import com.example.Model.Enums.Material;
+import com.example.Model.Enums.Size;
 import com.example.Model.BusinessObjects.BusinessObject;
 
 

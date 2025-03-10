@@ -1,4 +1,4 @@
-package com.example.Controller.Enums;
+package com.example.Model.Enums;
 
 public enum Size {
     SMALL(1), MEDIUM(2), LARGE(3);

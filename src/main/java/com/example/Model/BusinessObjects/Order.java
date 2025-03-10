@@ -6,7 +6,7 @@ import com.example.Model.BusinessObjects.Clothes.Clothes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Order extends BusinessObject{
+public class Order extends BusinessObject {
 
     private List<Clothes> clothesList = new ArrayList<>();
     private Customer customer;

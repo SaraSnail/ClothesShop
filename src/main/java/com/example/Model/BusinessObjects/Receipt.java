@@ -6,7 +6,7 @@ import com.example.Model.BusinessObjects.Clothes.TShirt;
 
 import java.text.NumberFormat;
 
-public class Receipt extends BusinessObject{
+public class Receipt extends BusinessObject {
 
     private Order order;
 

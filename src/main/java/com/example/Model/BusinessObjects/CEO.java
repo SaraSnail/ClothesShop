@@ -1,6 +1,6 @@
 package com.example.Model.BusinessObjects;
 
-import com.example.Controller.Observer.Listener;
+import com.example.Model.Observer.Listener;
 
 public class CEO extends BusinessObject implements Listener {
     private String news;

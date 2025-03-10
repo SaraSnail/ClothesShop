@@ -1,4 +1,4 @@
-package com.example.Controller.Observer;
+package com.example.Model.Observer;
 
 
 import java.util.ArrayList;

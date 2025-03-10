@@ -1,6 +1,6 @@
 package com.example.Controller.Command;
 
-import com.example.Controller.Observer.EventManager;
+import com.example.Model.Observer.EventManager;
 import com.example.Model.BusinessObjects.Clothes.Clothes;
 
 import java.util.ArrayList;
