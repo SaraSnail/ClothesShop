@@ -19,6 +19,15 @@ public class MenuView {
         System.out.println("Welcome! Please enter the following materials:");
     }
 
+    public static void customerExample(){
+        System.out.println();
+        System.out.println("Example of user info:");
+        System.out.println("Full name: Josefin Flodin");
+        System.out.println("Adress: Street 12B");
+        System.out.println("Mail: josefin.flodin@gmail.com");
+        System.out.println();
+    }
+
     public static String getUserInput(String input){
         System.out.print(input);
         return scanner.nextLine();
