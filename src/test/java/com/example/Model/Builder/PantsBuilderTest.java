@@ -1,22 +1,49 @@
 package com.example.Model.Builder;
 
+import com.example.Model.BusinessObjects.CEO;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 import com.example.Model.Enums.Color;
 import com.example.Model.Enums.Material;
 import com.example.Model.Enums.Size;
+import com.example.Model.Observer.EventManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class PantsBuilderTest {
 
     private PantsBuilder pantsBuilder;
+    private Size size;
+    private Color color;
+    private Material material;
+
+    @Mock
+    private CEO mockCEO;
 
 
     @BeforeEach
     public void setUp() {
         pantsBuilder = new PantsBuilder();
+        size = Size.MEDIUM;
+        color = Color.BLACK;
+        material = Material.JEANS;
+
+        mockCEO = mock(CEO.class);
+        
+    }
+
+    @Test
+    void notifyListenersOnEventManagerIsCalledInPantsBuilderCreateClothesMethod(){
+        EventManager eventManager = EventManager.getInstance();
+        eventManager.addListener(mockCEO);
+
+        PantsBuilder pantsBuilder = new PantsBuilder();
+
+        verify(mockCEO).update("Pants started creation");
+
     }
 
 
@@ -25,9 +52,9 @@ class PantsBuilderTest {
 
         assertDoesNotThrow(() -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addMaterial(Material.JEANS)
-                    .addColor(Color.BLACK)
+                    .addSize(size)
+                    .addMaterial(material)
+                    .addColor(color)
                     .build();
         });
 
@@ -38,8 +65,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addColor(Color.BLACK)
-                    .addMaterial(Material.JEANS)
+                    .addColor(color)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -52,8 +79,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addColor(Color.BLACK)
-                    .addMaterial(Material.JEANS)
+                    .addColor(color)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -65,8 +92,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addColor(Color.BLACK)
+                    .addSize(size)
+                    .addColor(color)
                     .build();
         });
 
@@ -79,8 +106,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addColor(Color.BLACK)
+                    .addSize(size)
+                    .addColor(color)
                     .build();
         });
 
@@ -91,8 +118,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addMaterial(Material.JEANS)
+                    .addSize(size)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -105,8 +132,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(Size.MEDIUM)
-                    .addMaterial(Material.JEANS)
+                    .addSize(size)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -121,19 +148,25 @@ class PantsBuilderTest {
     }
 
     @Test
-    void pantsBuilderShouldReturnInstanceOfPants() {
+    void pantsBuilderShouldReturnInstanceOfPantsWithTheSameAttributes() {
+        Pants pants;
 
-        assertInstanceOf(Pants.class, pantsBuilder
-                .addSize(Size.MEDIUM)
-                .addMaterial(Material.JEANS)
-                .addColor(Color.BLACK)
+        assertInstanceOf(Pants.class,
+                pants = (Pants) pantsBuilder
+                .addSize(size)
+                .addMaterial(material)
+                .addColor(color)
                 .build());
+
+        assertEquals(size, pants.getSize());
+        assertEquals(material, pants.getMaterial());
+        assertEquals(color, pants.getColor());
     }
 
     @Test
-    void createClothesMethodShouldReturnInstanceOfPants1() {
-
+    void createClothesMethodShouldReturnInstanceOfPants() {
         assertInstanceOf(Pants.class, pantsBuilder.createClothes());
     }
+
 
 }
