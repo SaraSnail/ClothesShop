@@ -78,8 +78,11 @@ public class MenuController {
         eventManager.addListener(ceo);
     }
 
-    public static Order createCustomerAndOrder(int id,String fullName,String adress,String mail){
-        Customer customer = new Customer(id,fullName,adress,mail);
+    public static Customer createCustomer(int id,String fullName,String adress,String mail){
+        return new Customer(id,fullName,adress,mail);
+    }
+
+    public static Order createOrder(int id, Customer customer){
         Order order = new Order(id,"Order");
         order.setCustomer(customer);
         return order;

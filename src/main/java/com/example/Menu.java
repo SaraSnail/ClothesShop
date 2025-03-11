@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.Controller.MenuController;
+import com.example.Model.BusinessObjects.Customer;
 import com.example.Model.BusinessObjects.Order;
 import com.example.Model.BusinessObjects.Receipt;
 import com.example.View.MenuView;
@@ -26,9 +27,10 @@ public class Menu {
             String address = MenuView.getUserInput("Address: ");
             String mail = MenuView.getUserInput("Mail: ");
 
-            Order order = MenuController.createCustomerAndOrder(id, fullName, address, mail);
+            Customer customer = MenuController.createCustomer(id, fullName, address, mail);
+            Order order = MenuController.createOrder(id, customer);
 
-            MenuView.displayCustomerName(order.getCustomer().getName());
+            MenuView.displayCustomerName(customer.getName());
 
             boolean addClothes = true;
             int clothesId = 1;
