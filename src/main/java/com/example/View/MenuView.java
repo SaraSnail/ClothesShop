@@ -42,6 +42,10 @@ public class MenuView {
         receipt.printOrder();
     }
 
+    public static void displayQuit(){
+        System.out.println("Shutting down...");
+    }
+
     public static int displayEnumChoices(List<String > choices, String type) {
 
         System.out.println("["+type.toUpperCase()+"]");

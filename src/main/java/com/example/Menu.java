@@ -35,8 +35,6 @@ public class Menu {
             boolean addClothes = true;
             int clothesId = 1;
 
-
-
             while (addClothes) {
 
                 MenuView.displayClothesOptions();
@@ -65,7 +63,7 @@ public class Menu {
                 id++;
                 System.out.println();
             }else {
-                System.out.println("Shutting down...");
+                MenuView.displayQuit();
             }
 
         }
