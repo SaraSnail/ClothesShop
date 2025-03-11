@@ -26,11 +26,12 @@ public class Receipt extends BusinessObject {
         numberFormat.setMaximumFractionDigits(2);
 
         System.out.println("\n------------------------");
-        System.out.println("\t\t"+this.name + this.id);
+        System.out.println("\t\t"+this.name);
         System.out.println("To: " + order.getCustomer().getMail());
         System.out.println(order.getCustomer().getName());
+        System.out.println("Customer ID: " + order.getCustomer().getId());
         System.out.println("------------------------");
-        System.out.println("\t\t"+order.getName()+" "+ order.getId());
+        System.out.println("\t\t"+order.getName());
         System.out.println("------------------------");
         for (int i = 0; i < order.getClothesList().size(); i++) {
 

@@ -9,6 +9,12 @@ import java.util.Scanner;
 public class MenuView {
     private static Scanner scanner = new Scanner(System.in);
 
+    public static void moreCustomers(){
+        System.out.println();
+        System.out.println("Start order for another customer?");
+        System.out.println("1. Yes\n2. No");
+    }
+
     public static void displayWelcomeMessage(){
         System.out.println("Welcome! Please enter the following materials:");
     }
@@ -29,7 +35,7 @@ public class MenuView {
     }
 
     public static void displayCustomerName(String name){
-        System.out.println("Nice to meet you " + name);
+        System.out.println("Nice to meet you " + name + "!");
     }
 
     public static void displayReceipt(Receipt receipt){
