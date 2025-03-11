@@ -73,6 +73,47 @@ public class MenuController {
         return choice;
     }
 
+    public static String userInputCorrect(String type){
+        String input;
+        String[] number = {"1","2","3","4","5","6","7","8","9"};
+
+        switch (type) {
+            case "Full name: ":
+                while (true) {
+                    input = MenuView.getUserInput(type);
+                    if (input.contains(" ")) {
+                        return input;
+                    }else {
+                        System.out.println("Must contain a space between first and last name");
+                    }
+                }
+            case "Address: ":
+                while (true) {
+                    input = MenuView.getUserInput(type);
+                    for(String nr : number){
+                        if (input.contains(nr)) {
+                            return input;
+                        }
+                    }
+                    System.out.println("Must contain a house number");
+
+                }
+
+            case "Mail: ":
+                while (true) {
+                    input = MenuView.getUserInput(type);
+                    if (input.contains("@")) {
+                        return input;
+                    }else {
+                        System.out.println("Must contain a @ to be an email address");
+                    }
+                }
+            default:
+                System.out.println("Invalid choice");
+        }
+        return null;
+    }
+
     public static void createCEO(){
         CEO ceo = new CEO(1,"Tomas Wigell");
         eventManager.addListener(ceo);
@@ -118,6 +159,12 @@ public class MenuController {
                 System.out.println("Invalid choice");
 
         }
+    }
+
+    private static String attributeChoice(String titel, String text){
+        String[] choices = MenuView.displayObjectSpecificAttribute(titel, text);
+        int nrChoice = getValidChoice(choices.length);
+        return choices[nrChoice -1];
     }
 
     private static void createPants(Order order,int id){
@@ -198,11 +245,8 @@ public class MenuController {
         order.getClothesList().add(skirt);
     }
 
-    private static String attributeChoice(String titel, String text){
-        String[] choices = MenuView.displayObjectSpecificAttribute(titel, text);
-        int nrChoice = getValidChoice(choices.length);
-        return choices[nrChoice -1];
-    }
+
+
 
 
 }

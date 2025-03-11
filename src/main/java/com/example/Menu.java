@@ -22,10 +22,11 @@ public class Menu {
         while (choice == 1) {
 
             MenuView.displayWelcomeMessage();
+            MenuView.customerExample();
 
-            String fullName = MenuView.getUserInput("Full name: ");
-            String address = MenuView.getUserInput("Address: ");
-            String mail = MenuView.getUserInput("Mail: ");
+            String fullName = MenuController.userInputCorrect("Full name: ");
+            String address = MenuController.userInputCorrect("Address: ");
+            String mail = MenuController.userInputCorrect("Mail: ");
 
             Customer customer = MenuController.createCustomer(id, fullName, address, mail);
             Order order = MenuController.createOrder(id, customer);
