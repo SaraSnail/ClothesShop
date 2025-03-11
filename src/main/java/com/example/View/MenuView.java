@@ -50,12 +50,10 @@ public class MenuView {
     public static String[] displayObjectSpecificAttribute(String titel, String text){
 
         String[] textArray = text.toUpperCase().split("/");
-        int nr = 1;
 
         System.out.println("["+titel.toUpperCase()+"] ");
-        for (String string : textArray) {
-            System.out.println(nr + ". " + string);
-            nr++;
+        for (int i = 0; i < textArray.length; i++) {
+            System.out.println((i +1) + ". " + textArray[i]);
         }
         return textArray;
     }

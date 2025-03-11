@@ -1,9 +1,11 @@
 package com.example.Model.Builder;
 
+import com.example.Model.BusinessObjects.CEO;
 import com.example.Model.BusinessObjects.Clothes.Pants;
 import com.example.Model.Enums.Color;
 import com.example.Model.Enums.Material;
 import com.example.Model.Enums.Size;
+import com.example.Model.Observer.EventManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -14,34 +16,34 @@ import static org.mockito.Mockito.*;
 class PantsBuilderTest {
 
     private PantsBuilder pantsBuilder;
+    private Size size;
+    private Color color;
+    private Material material;
 
     @Mock
-    private Size mockSize;
-    private Material mockMaterial;
-    private Color mockColor;
-    private Pants mockPants;
+    private CEO mockCEO;
 
 
     @BeforeEach
     public void setUp() {
         pantsBuilder = new PantsBuilder();
-        mockSize = mock(Size.class);
-        mockMaterial = mock(Material.class);
-        mockColor = mock(Color.class);
-        mockPants = mock(Pants.class);
+        size = Size.MEDIUM;
+        color = Color.BLACK;
+        material = Material.JEANS;
+
+        mockCEO = mock(CEO.class);
         
     }
 
     @Test
-    void useVerify(){
-        String sizeString = String.valueOf(mockSize.getValue());
-        verify(mockSize).getValue();
-    }
+    void notifyListenersOnEventManagerIsCalledInPantsBuilderCreateClothesMethod(){
+        EventManager eventManager = EventManager.getInstance();
+        eventManager.addListener(mockCEO);
 
-    @Test
-    void getSizeMediumWithStub(){
-        when(mockPants.getSize()).thenReturn(Size.MEDIUM);
-        assertEquals(Size.MEDIUM, mockPants.getSize());
+        PantsBuilder pantsBuilder = new PantsBuilder();
+
+        verify(mockCEO).update("Pants started creation");
+
     }
 
 
@@ -50,9 +52,9 @@ class PantsBuilderTest {
 
         assertDoesNotThrow(() -> {
             pantsBuilder
-                    .addSize(mockSize)
-                    .addMaterial(mockMaterial)
-                    .addColor(mockColor)
+                    .addSize(size)
+                    .addMaterial(material)
+                    .addColor(color)
                     .build();
         });
 
@@ -63,8 +65,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addColor(mockColor)
-                    .addMaterial(mockMaterial)
+                    .addColor(color)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -77,8 +79,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addColor(mockColor)
-                    .addMaterial(mockMaterial)
+                    .addColor(color)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -90,8 +92,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(mockSize)
-                    .addColor(mockColor)
+                    .addSize(size)
+                    .addColor(color)
                     .build();
         });
 
@@ -104,8 +106,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(mockSize)
-                    .addColor(mockColor)
+                    .addSize(size)
+                    .addColor(color)
                     .build();
         });
 
@@ -116,8 +118,8 @@ class PantsBuilderTest {
 
         RuntimeException exceptionThrown = assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(mockSize)
-                    .addMaterial(mockMaterial)
+                    .addSize(size)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -130,8 +132,8 @@ class PantsBuilderTest {
 
         assertThrows(RuntimeException.class, () -> {
             pantsBuilder
-                    .addSize(mockSize)
-                    .addMaterial(mockMaterial)
+                    .addSize(size)
+                    .addMaterial(material)
                     .build();
         });
 
@@ -146,19 +148,25 @@ class PantsBuilderTest {
     }
 
     @Test
-    void pantsBuilderShouldReturnInstanceOfPants() {
+    void pantsBuilderShouldReturnInstanceOfPantsWithTheSameAttributes() {
+        Pants pants;
 
-        assertInstanceOf(Pants.class, pantsBuilder
-                .addSize(mockSize)
-                .addMaterial(mockMaterial)
-                .addColor(mockColor)
+        assertInstanceOf(Pants.class,
+                pants = (Pants) pantsBuilder
+                .addSize(size)
+                .addMaterial(material)
+                .addColor(color)
                 .build());
+
+        assertEquals(size, pants.getSize());
+        assertEquals(material, pants.getMaterial());
+        assertEquals(color, pants.getColor());
     }
 
     @Test
-    void createClothesMethodShouldReturnInstanceOfPants1() {
-
+    void createClothesMethodShouldReturnInstanceOfPants() {
         assertInstanceOf(Pants.class, pantsBuilder.createClothes());
     }
+
 
 }
